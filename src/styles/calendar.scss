@@ -1,44 +1,19 @@
 .calendar
 {
-	margin: 25px auto 0 auto;
-	max-width: 400px;
-
-	.button-wrapper
-	{
-		display: flex;
-		justify-content: center;
-		align-items: center;		
-	}
-
-	.header-button
-	{
-		display: flex;
-		width: 25px;
-		height: 25px;
-		border-radius: 50%;
-		justify-content: center;
-		align-items: center;
-
-		&:hover
-		{
-			background-color: rgb(229,76,132);
-		}
-	}
+	margin: 20px auto 0 auto;
 
 	.icon
 	{
 		width: 13px;
 		height: 13px;
 	//	background-color: var(--tg-theme-button-color);
-		background-color: black;
+		background-color: rgb(250,81,58);
 
 		-webkit-mask-repeat: no-repeat;
 		-webkit-mask-position: center;
 
 		mask-repeat: no-repeat;
 		mask-position: center;
-
-		
 
 		&.icon-prev
 		{
@@ -50,6 +25,24 @@
 		{
 			-webkit-mask-image: url(../resources/chevron-right.svg);
 			mask-image: url(../resources/chevron-right.svg);
+		}
+	}
+
+	.button-wrapper
+	{
+		display: flex;
+		justify-content: center;
+		align-items: center;	
+		
+		.header-button
+		{
+			display: flex;
+			width: 25px;
+			height: 25px;
+			border-radius: 50%;
+			justify-content: center;
+			align-items: center;
+			cursor: pointer;
 		}
 	}
 
@@ -68,6 +61,11 @@
 			font-size: 18px;
 		}
 
+		.header-month
+		{
+			font-weight: 500;
+		}
+
 		.header-year
 		{
 			font-weight: bold;
@@ -76,6 +74,13 @@
 
 	.calendar-line
 	{
+	
+		&.header
+		{
+			color: rgb(250,81,58);
+			font-weight: 600;
+		}
+
 		display: grid;
 		grid-template-columns: repeat(7, 1fr);
 		margin-bottom: 10px;
@@ -83,9 +88,12 @@
 
 		.calendar-item
 		{
-			&:first-child
+			font-weight: 450;
+			cursor: pointer;
+
+			&.today
 			{
-				grid-column-start: 5;
+				color: rgb(250,81,58);
 			}
 		}
 	}

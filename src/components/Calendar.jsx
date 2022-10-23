@@ -45,8 +45,6 @@ const Calendar = () =>
 		end: endOfMonth(firstDayCurrentMonth),
 	})
 	
-	let daysOffset = getDay(days[0]);
-
 	const previousMonth = () =>
 	{
 		let firstDayNextMonth = add(firstDayCurrentMonth, { months: -1 });
@@ -80,14 +78,14 @@ const Calendar = () =>
 				</div>
 
 			</div>
-			<div className='calendar-line'>
-              <div>Пн</div>
-              <div>Вт</div>
-              <div>Ср</div>
-              <div>Чт</div>
-              <div>Пт</div>
-              <div>Сб</div>
-              <div>Вс</div>
+			<div className='calendar-line header'>
+				<div>Пн</div>
+				<div>Вт</div>
+				<div>Ср</div>
+				<div>Чт</div>
+				<div>Пт</div>
+				<div>Сб</div>
+				<div>Вс</div>
 			</div>
 			
 			<div className='calendar-line'>
@@ -96,11 +94,14 @@ const Calendar = () =>
 					days.map((value, index) =>
 					(
 						index === 0 ? 
-							<div key={value.toString()} style={{ 'grid-column-start': getDay(value).toString() }}>
+							<div key={value.toString()}
+								style={{ 'gridColumnStart': getDay(value).toString() }}
+								className={"calendar-item " + (isEqual(value, today) ? "today" : "")}>
 								{index + 1}
 							</div>
 							:
-							<div key={value.toString()}>
+							<div key={value.toString()}
+								className={"calendar-item " + (isEqual(value, today) ? "today" : "")}>
 								{index + 1}
 							</div>
 					))

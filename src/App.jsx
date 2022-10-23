@@ -1,12 +1,16 @@
 import React from 'react';
-import { Calendar } from './components'
+import { Routes, Route, Navigate } from "react-router-dom";
+import { Calendar, Schedule } from './components'
 
 import './styles/app.scss';
 
 const App = () => {
 	return (
-		<div className='App'>
-			<Calendar />
+		<div className='app'>
+			<Routes>
+				<Route path='/' element={<Calendar />} />
+				<Route path='/schedule' element={<Schedule />} />
+			</Routes>
 		</div>
 	);
 }
