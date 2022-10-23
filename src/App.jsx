@@ -5,8 +5,7 @@ import './styles/app.scss';
 
 const App = () => {
 	return (
-		<div className="App">
-			work
+		<div className='App'>
 			<Calendar />
 		</div>
 	);
