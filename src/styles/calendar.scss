@@ -2,50 +2,6 @@
 {
 	margin: 20px auto 0 auto;
 
-	.icon
-	{
-		width: 13px;
-		height: 13px;
-	//	background-color: var(--tg-theme-button-color);
-		background-color: rgb(250,81,58);
-
-		-webkit-mask-repeat: no-repeat;
-		-webkit-mask-position: center;
-
-		mask-repeat: no-repeat;
-		mask-position: center;
-
-		&.icon-prev
-		{
-			-webkit-mask-image: url(../resources/chevron-left.svg);
-			mask-image: url(../resources/chevron-left.svg);
-		}
-
-		&.icon-next
-		{
-			-webkit-mask-image: url(../resources/chevron-right.svg);
-			mask-image: url(../resources/chevron-right.svg);
-		}
-	}
-
-	.button-wrapper
-	{
-		display: flex;
-		justify-content: center;
-		align-items: center;	
-		
-		.header-button
-		{
-			display: flex;
-			width: 25px;
-			height: 25px;
-			border-radius: 50%;
-			justify-content: center;
-			align-items: center;
-			cursor: pointer;
-		}
-	}
-
 	.calendar-header
 	{
 		display: grid;
@@ -88,12 +44,31 @@
 
 		.calendar-item
 		{
-			font-weight: 450;
 			cursor: pointer;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			margin: auto;
+			font-weight: 450;
+			width: 32px;
+			height: 32px;
+			border-radius: 50%;
+
+			&:hover
+			{
+				background-color: rgb(229,231,235);
+			}
 
 			&.today
 			{
 				color: rgb(250,81,58);
+
+				&:hover
+				{
+					background-color: rgba(0,0,0,0.1);
+					color: var(--tg-theme-text-color);
+				}
 			}
 		}
 	}

@@ -1,0 +1,52 @@
+.icon
+{
+	width: 13px;
+	height: 13px;
+//	background-color: var(--tg-theme-button-color);
+	background-color: rgb(250,81,58);
+
+	-webkit-mask-repeat: no-repeat;
+	-webkit-mask-position: center;
+
+	mask-repeat: no-repeat;
+	mask-position: center;
+
+	&.icon-prev
+	{
+		-webkit-mask-image: url(../icons/chevron-left.svg);
+		mask-image: url(../icons/chevron-left.svg);
+	}
+
+	&.icon-next
+	{
+		-webkit-mask-image: url(../icons/chevron-right.svg);
+		mask-image: url(../icons/chevron-right.svg);
+	}
+
+	&.icon-calendar
+	{
+		width: 15px;
+		height: 15px;
+		-webkit-mask-image: url(../icons/calendar.svg);
+		mask-image: url(../icons/calendar.svg);
+	}
+
+}
+
+.button-wrapper
+{
+	display: flex;
+	justify-content: center;
+	align-items: center;	
+	
+	.icon-button
+	{
+		display: flex;
+		width: 25px;
+		height: 25px;
+		border-radius: 50%;
+		justify-content: center;
+		align-items: center;
+		cursor: pointer;
+	}
+}

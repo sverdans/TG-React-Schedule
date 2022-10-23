@@ -1,40 +1,22 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
-	add,
 	eachDayOfInterval,
+	startOfToday,
 	endOfMonth,
+	isEqual,
 	format,
 	getDay,
-	isEqual,
-	isSameDay,
-	isSameMonth,
-	isToday,
 	parse,
-	parseISO,
-	startOfToday,
+	add,
 } from 'date-fns';
-  
-const translateToRu = (month) =>
-{
-	switch (month)
-	{
-		case 'January':		return 'Январь';
-		case 'February':	return 'Февраль';
-		case 'March':		return 'Март';
-		case 'April':		return 'Апрель';
-		case 'May': 		return 'Май';
-		case 'June':		return 'Июнь';
-		case 'July':		return 'Июль';
-		case 'August':		return 'Август';
-		case 'September':	return 'Сентябрь';
-		case 'October':		return 'Октябрь';
-		case 'November':	return 'Ноябрь';
-		case 'December':	return 'Декабрь';
-	}
-}
+
+import { translateToRu } from '../utils/functions';
 
 const Calendar = () =>
 {
+	const navigate = useNavigate();
+
 	let today = startOfToday();
 	let [selectedDay, setSelectedDay] = React.useState(today);
 	let [currentMonth, setCurrentMonth] = React.useState(format(today, 'MMM-yyyy'));
@@ -57,22 +39,27 @@ const Calendar = () =>
 		setCurrentMonth(format(firstDayNextMonth, 'MMM-yyyy'));
 	}
 	
+	const redurectToSchedule = (date) =>
+	{
+		navigate('/schedule', { state: { date } });
+	};
+	
 	return (
 		<div className='calendar'>
 			<div className='calendar-header'>
 				<div className='button-wrapper'>
-					<div className='header-button' onClick={previousMonth}>
+					<div className='icon-button' onClick={previousMonth}>
 						<div className='icon icon-prev'/>
 					</div>
 				</div>
 				
 				<div className='header-text'>
-					<div className='header-month'>{translateToRu(format(firstDayCurrentMonth, 'MMMM'))}</div>
+					<div className='header-month'>{translateToRu(format(firstDayCurrentMonth, 'MMMM'), true)}</div>
 					<div className='header-year'>{format(firstDayCurrentMonth, 'yyyy')}</div>
 				</div>
 				
 				<div className='button-wrapper'>
-					<div className='header-button' onClick={nextMonth}>
+					<div className='icon-button' onClick={nextMonth}>
 						<div className='icon icon-next'/>
 					</div>
 				</div>
@@ -91,17 +78,19 @@ const Calendar = () =>
 			<div className='calendar-line'>
 				{
 					days && 
-					days.map((value, index) =>
+					days.map((date, index) =>
 					(
 						index === 0 ? 
-							<div key={value.toString()}
-								style={{ 'gridColumnStart': getDay(value).toString() }}
-								className={"calendar-item " + (isEqual(value, today) ? "today" : "")}>
+							<div key={date.toString()}
+								style={{ 'gridColumnStart': getDay(date).toString() }}
+								className={"calendar-item " + (isEqual(date, today) ? "today" : "")}
+								onClick={() => { redurectToSchedule(date) }}>
 								{index + 1}
 							</div>
 							:
-							<div key={value.toString()}
-								className={"calendar-item " + (isEqual(value, today) ? "today" : "")}>
+							<div key={date.toString()}
+								className={"calendar-item " + (isEqual(date, today) ? "today" : "")}
+								onClick={() => { redurectToSchedule(date) }}>
 								{index + 1}
 							</div>
 					))
