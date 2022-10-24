@@ -4,6 +4,8 @@ import {
 	add,
 	format,
 	getDay,
+	endOfDay,
+	getDate,
 	isToday,
 	startOfToday,
 } from 'date-fns';
@@ -15,9 +17,8 @@ const Schedule = () =>
 {
 	const navigate = useNavigate();
 	const { state } = useLocation();
-	const { date } = state || startOfToday();
+	const { date } = state || endOfDay(new Date());
 	const daySchedule = jsonSchedule.schedule.find((value) => (value.day === getDay(date)));
-
 	const redirectToCalendar = () => { navigate('/') };
 
 	return (
