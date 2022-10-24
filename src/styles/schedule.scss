@@ -1,24 +1,25 @@
 .schedule
 {
-	margin: 0 auto;
+	margin: 25px auto 0px auto;
 
 	.schedule-header
 	{
 		display: grid;
 		grid-template-columns: 50px auto 50px 50px;
+		
+		padding: 0px 20px;
 		margin-bottom: 20px;
 
 		font-size: 18px;
 		font-weight: 500;
-
-		margin-bottom: 15px;
 
 		.header-text
 		{
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			gap: 10px;
+			gap: 8px;
+
 			font-size: 18px;
 
 			.day
@@ -26,8 +27,6 @@
 				font-weight: bold;
 			}
 		}
-
-		
 	}
 
 	.lessons-list

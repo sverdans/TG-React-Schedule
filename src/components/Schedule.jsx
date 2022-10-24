@@ -2,16 +2,9 @@ import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import {
 	add,
-	eachDayOfInterval,
-	endOfMonth,
 	format,
 	getDay,
-	isEqual,
-	isSameDay,
-	isSameMonth,
 	isToday,
-	parse,
-	parseISO,
 	startOfToday,
 } from 'date-fns';
 
@@ -25,9 +18,7 @@ const Schedule = () =>
 	const { date } = state || startOfToday();
 	const daySchedule = jsonSchedule.schedule.find((value) => (value.day === getDay(date)));
 
-	const redurectToCalendar = () => { navigate('/') };
-
-	console.log(daySchedule);
+	const redirectToCalendar = () => { navigate('/') };
 
 	return (
 		<div className='schedule'>
@@ -49,7 +40,7 @@ const Schedule = () =>
 				</div>
 
 				<div className='button-wrapper'>
-					<div className='icon-button' onClick={redurectToCalendar}>
+					<div className='icon-button' onClick={redirectToCalendar}>
 						<div className='icon icon-calendar'/>
 					</div>
 				</div>
@@ -66,6 +57,12 @@ const Schedule = () =>
 								<div className='lesson-order'>{lesson.order}</div>
 								<div className='lesson-type'>{lesson.type}</div>
 								<div className='lesson-time'>{orderToTime(lesson.order)}</div>
+							</div>
+							<div className='lesson-card-body'>
+								<div className='lesson-name'>{lesson.name}</div>
+							</div>
+							<div className='lesson-footer'>
+								<div className='lesson-auditorium'>{lesson.auditorium}</div>
 							</div>
 						</div>
 					))
