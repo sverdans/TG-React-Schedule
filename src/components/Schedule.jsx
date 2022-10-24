@@ -17,7 +17,7 @@ const Schedule = () =>
 {
 	const navigate = useNavigate();
 	const { state } = useLocation();
-	const { date } = state || endOfDay(new Date());
+	const date = state?.date || startOfToday();
 	const daySchedule = jsonSchedule.schedule.find((value) => (value.day === getDay(date)));
 	const redirectToCalendar = () => { navigate('/') };
 
@@ -53,7 +53,7 @@ const Schedule = () =>
 				{
 					daySchedule && daySchedule.lessons && 
 					daySchedule.lessons.map((lesson, index) => (
-						<div className='lesson-card'>
+						<div className='lesson-card' key={index + lesson}>
 							<div className='lesson-card-header'>
 								<div className='lesson-order'>{lesson.order}</div>
 								<div className='lesson-type'>{lesson.type}</div>
