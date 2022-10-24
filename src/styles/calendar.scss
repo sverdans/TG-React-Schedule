@@ -33,7 +33,7 @@
 	{
 		&.header
 		{
-			color: rgb(250,81,58);
+			color: var(--tg-theme-link-color);
 			font-weight: 600;
 		}
 
@@ -58,17 +58,18 @@
 
 			&:hover
 			{
-				background-color: rgba(0,0,0,0.1);
+				background-color: var(--tg-theme-button-color);
+				color: var(--tg-theme-text-color);
 			}
 
 			&.today
 			{
-				color: rgb(250,81,58);
+				color: var(--tg-theme-button-color);
 
 				&:hover
 				{
-					background-color: rgba(0,0,0,0.1);
-					color: var(--tg-theme-text-color);
+					background-color: var(--tg-theme-button-color);
+					color: var(--tg-theme-button-text-color);
 				}
 			}
 		}

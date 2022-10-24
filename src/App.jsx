@@ -4,12 +4,17 @@ import { Calendar, Schedule } from './components'
 
 import './styles/app.scss';
 
-const App = () => {
+const tg = window.Telegram.WebApp;
+
+const App = () =>
+{
+	React.useEffect(() => { tg.ready() }, []);
+	
 	return (
 		<div className='app'>
 			<Routes>
-				<Route path='/' element={<Calendar />} />
-				<Route path='/schedule' element={<Schedule />} />
+				<Route index element={<Calendar />} />
+				<Route path='schedule' element={<Schedule />} />
 			</Routes>
 		</div>
 	);
