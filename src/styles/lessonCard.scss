@@ -3,6 +3,7 @@
 	display: flex;
 	flex-direction: column;
 	padding: 10px 20px;
+	background-color: var(--tg-theme-secondary-bg-color);
 
 	.lesson-card-header
 	{
@@ -22,7 +23,7 @@
 			width: 25px;
 			height: 25px;
 			border-radius: 50%;
-			background-color: var(--tg-theme-secondary-bg-color);
+			background-color: var(--tg-theme-button-color);
 		}
 		
 		.lesson-type
