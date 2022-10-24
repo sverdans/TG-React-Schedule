@@ -1,14 +1,6 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import {
-	add,
-	format,
-	getDay,
-	endOfDay,
-	getDate,
-	isToday,
-	startOfToday,
-} from 'date-fns';
+import { add, format, getDay } from 'date-fns';
 
 import { translateToRu, orderToTime } from '../utils/functions';
 import jsonSchedule from '../schedule.json';
@@ -17,15 +9,19 @@ const Schedule = () =>
 {
 	const navigate = useNavigate();
 	const { state } = useLocation();
-	const date = state?.date || startOfToday();
-	const daySchedule = jsonSchedule.schedule.find((value) => (value.day === getDay(date)));
+	const [date, setDate] = React.useState(state?.date || new Date());
 	const redirectToCalendar = () => { navigate('/') };
+
+	const nextDay = () => { setDate(add(date, { days: 1} )) }
+	const previousDay = () => { setDate(add(date, { days: -1} )) }
+	
+	const daySchedule = jsonSchedule.schedule.find((value) => (value.day === getDay(date)));
 
 	return (
 		<div className='schedule'>
 			<div className='schedule-header'>
 				<div className='button-wrapper'>
-					<div className='icon-button' onClick={() => { }}>
+					<div className='icon-button' onClick={previousDay}>
 						<div className='icon icon-prev'/>
 					</div>
 				</div>
@@ -35,7 +31,7 @@ const Schedule = () =>
 					<div>{translateToRu(format(date, 'MMMM'), false)}</div>
 				</div>
 				<div className='button-wrapper'>
-					<div className='icon-button' onClick={() => { }}>
+					<div className='icon-button' onClick={nextDay}>
 						<div className='icon icon-next'/>
 					</div>
 				</div>
@@ -45,8 +41,6 @@ const Schedule = () =>
 						<div className='icon icon-calendar'/>
 					</div>
 				</div>
-
-				
 			</div>
 
 			<div className='lessons-list'>
