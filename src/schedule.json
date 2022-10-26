@@ -1,5 +1,11 @@
 {
-	"schedule": [
+	"firstDay": { 
+		"year": 2022,
+		"month": 8,
+		"day": 29
+	},
+
+	"scheduleOdd": [
 		{
 			"day": 1,
 			"lessons":
@@ -99,13 +105,140 @@
 			[
 				{
 					"order": 4,
-					"name": "РАЗР.ТРАНСЛ.ИС.ЯЗ",
+					"name": "РАЗР. ТРАНСЛ. ИС. ЯЗ",
 					"type": "Лекция",
 					"auditorium": "374"
 				},
 				{
 					"order": 5,
-					"name": "АРХ.ЭВМ И СИСТЕМ",
+					"name": "АРХ. ЭВМ И СИСТЕМ",
+					"type": "Лабораторная",
+					"auditorium": "278"
+				}
+			]
+		},
+
+		{
+			"day": 6,
+			"lessons":
+			[
+				{
+					"order": 1,
+					"name": "ЭК ПО ФК И СПОРТУ",
+					"type": "Практика",
+					"auditorium": " "
+				},
+				{
+					"order": 2,
+					"name": "ОПЕРАЦ. СИСТЕМЫ",
+					"type": "Практика",
+					"auditorium": "258*"
+				}
+			]
+		}
+	],
+
+	"scheduleEven": [
+		{
+			"day": 1,
+			"lessons":
+			[
+				{
+					"order": 3,
+					"name": "ОСН. ТЕОР. УПР-Я",
+					"type": "Лекция",
+					"auditorium": "374"
+				},
+				{
+					"order": 3,
+					"name": "КОМП. ГЕОМ. И ГР",
+					"type": "Лекция",
+					"auditorium": "314"
+				},
+				{
+					"order": 4,
+					"name": "АРХ. ЭВМ И СИСТЕМ",
+					"type": "Лекция",
+					"auditorium": "315"
+				}
+			]
+		},
+
+		{
+			"day": 2,
+			"lessons":
+			[
+				{
+					"order": 1,
+					"name": "ОСН. ТЕОР. УПР-Я",
+					"type": "Практика",
+					"auditorium": "346"
+				},
+				{
+					"order": 2,
+					"name": "ЭК ПО ФК И СПОРТУ",
+					"type": "Практика",
+					"auditorium": " "
+				},
+				{
+					"order": 4,
+					"name": "ТЕОР. ПРИН. РЕШЕНИЙ",
+					"type": "Практика",
+					"auditorium": "274"
+				}
+			]
+		},
+		
+		{
+			"day": 4,
+			"lessons":
+			[
+				{
+					"order": 2,
+					"name": "МАТЕМ. 6: ТЕОР. ВЕР.",
+					"type": "Практика",
+					"auditorium": "497"
+				},
+				{
+					"order": 3,
+					"name": "МАТЕМ. 6: ТЕОР. ВЕР.",
+					"type": "Практика",
+					"auditorium": "422*"
+				},
+				{
+					"order": 4,
+					"name": "ВИЗУАЛЬН. ПРОГР.",
+					"type": "Практика",
+					"auditorium": "256*"
+				}
+			]
+		},
+
+		{
+			"day": 5,
+			"lessons":
+			[
+				{
+					"order": 2,
+					"name": "ТЕОР. ПРИН. РЕШЕН",
+					"type": "Лекция",
+					"auditorium": "310"
+				},
+				{
+					"order": 3,
+					"name": "МАТЕМ. 6: ТЕОР. ВЕР.",
+					"type": "Лекция",
+					"auditorium": "443"
+				},
+				{
+					"order": 4,
+					"name": "РАЗР. ТРАНСЛ. ИС. ЯЗ",
+					"type": "Лекция",
+					"auditorium": "374"
+				},
+				{
+					"order": 5,
+					"name": "АРХ. ЭВМ И СИСТЕМ",
 					"type": "Лабораторная",
 					"auditorium": "278"
 				}

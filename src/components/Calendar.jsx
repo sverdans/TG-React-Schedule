@@ -6,12 +6,13 @@ import {
 	endOfMonth,
 	isEqual,
 	format,
+	getMonth,
 	getDay,
 	parse,
 	add,
 } from 'date-fns';
 
-import { translateToRu } from '../utils/functions';
+import { getMonthName } from '../utils/functions';
 
 const Calendar = () =>
 {
@@ -48,20 +49,20 @@ const Calendar = () =>
 		<div className='calendar'>
 			<div className='calendar-header'>
 				<div className='button-wrapper'>
-					<div className='icon-button' onClick={previousMonth}>
+					<button className='icon-button' onClick={previousMonth}>
 						<div className='icon icon-prev'/>
-					</div>
+					</button>
 				</div>
 				
 				<div className='header-text'>
-					<div className='header-month'>{translateToRu(format(firstDayCurrentMonth, 'MMMM'), true)}</div>
+					<div className='header-month'>{getMonthName(getMonth(firstDayCurrentMonth), true)}</div>
 					<div className='header-year'>{format(firstDayCurrentMonth, 'yyyy')}</div>
 				</div>
 				
 				<div className='button-wrapper'>
-					<div className='icon-button' onClick={nextMonth}>
+					<button className='icon-button' onClick={nextMonth}>
 						<div className='icon icon-next'/>
-					</div>
+					</button>
 				</div>
 
 			</div>

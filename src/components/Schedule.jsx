@@ -1,12 +1,13 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { add, format, getDay } from 'date-fns';
+import { add, differenceInDays, differenceInWeeks, format, getDay, getMonth } from 'date-fns';
 
-import { translateToRu, orderToTime } from '../utils/functions';
+import { getMonthName, orderToTime } from '../utils/functions';
 import jsonSchedule from '../schedule.json';
 
 const Schedule = () =>
 {
+	const { firstDay } = jsonSchedule;
 	const navigate = useNavigate();
 	const { state } = useLocation();
 	const [date, setDate] = React.useState(state?.date || new Date());
@@ -15,37 +16,43 @@ const Schedule = () =>
 	const nextDay = () => { setDate(add(date, { days: 1} )) }
 	const previousDay = () => { setDate(add(date, { days: -1} )) }
 	
-	const daySchedule = jsonSchedule.schedule.find((value) => (value.day === getDay(date)));
+	const isEvenWeek = differenceInWeeks(date, new Date(firstDay.year, firstDay.month - 1, firstDay.day)) % 2 != 0;
 
+	const daySchedule = isEvenWeek ?
+		jsonSchedule.scheduleEven.find((value) => (value.day === getDay(date)))
+		:
+		jsonSchedule.scheduleOdd.find((value) => (value.day === getDay(date)))
+	
 	return (
 		<div className='schedule'>
 			<div className='schedule-header'>
 				<div className='button-wrapper'>
-					<div className='icon-button' onClick={previousDay}>
+					<button className='icon-button' onClick={previousDay}>
 						<div className='icon icon-prev'/>
-					</div>
+					</button>
 				</div>
 
 				<div className='header-text'>
 					<div className='day'>{format(date, 'd')}</div>
-					<div>{translateToRu(format(date, 'MMMM'), false)}</div>
+					<div>{getMonthName(getMonth(date), false)}</div>
 				</div>
 				<div className='button-wrapper'>
-					<div className='icon-button' onClick={nextDay}>
+					<button className='icon-button' onClick={nextDay}>
 						<div className='icon icon-next'/>
-					</div>
+					</button>
 				</div>
 
 				<div className='button-wrapper'>
-					<div className='icon-button' onClick={redirectToCalendar}>
+					<button className='icon-button' onClick={redirectToCalendar}>
 						<div className='icon icon-calendar'/>
-					</div>
+					</button>
 				</div>
 			</div>
 
 			<div className='lessons-list'>
 				{
-					daySchedule && daySchedule.lessons && 
+					daySchedule ? (
+					daySchedule.lessons && 
 					daySchedule.lessons.map((lesson, index) => (
 						<div className='lesson-card' key={index + lesson}>
 							<div className='lesson-card-header'>
@@ -61,7 +68,11 @@ const Schedule = () =>
 							</div>
 						</div>
 					))
+					)
+						:
+						<div className='weekend-title'>Выходной</div>
 				}
+				
 			</div>
 		</div>
 	);
